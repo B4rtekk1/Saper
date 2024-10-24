@@ -4,18 +4,18 @@ namespace Saper2
 {
     public partial class Form1 : Form
     {
-        GroupBox? gb;
-        RadioButton? rb1;
-        RadioButton? rb2;
-        RadioButton? rb3;
-        Button? btnNext;
-        Panel? panel;
-        Label? infoLabel;
-        PictureBox? imageBox;
-        PictureBox? imageBoxFlag;
-        Label? bombsLabel;
-        Label? flagLabel;
-        Label? rulesLabel;
+        private GroupBox? gb;
+        private RadioButton? rb1;
+        private RadioButton? rb2;
+        private RadioButton? rb3;
+        private Button? btnNext;
+        private Panel? panel;
+        private Label? infoLabel;
+        private PictureBox? imageBox;
+        private PictureBox? imageBoxFlag;
+        private Label? bombsLabel;
+        private Label? flagLabel;
+        private Label? rulesLabel;
         public Form1()
         {
             InitializeComponent();
@@ -135,7 +135,7 @@ namespace Saper2
 
             flagLabel = new Label();
             flagLabel.Text = "x 40";
-            flagLabel.Font = new Font(bombsLabel.Font.FontFamily, 12, FontStyle.Regular);
+            flagLabel.Font = new Font(flagLabel.Font.FontFamily, 12, FontStyle.Regular);
             flagLabel.AutoSize = true;
             flagLabel.Top = imageBoxFlag.Top;
             flagLabel.Left = bombsLabel.Left;
@@ -159,7 +159,6 @@ namespace Saper2
             infoLabel.Width = 100;
             infoLabel.Height = 100;
             infoLabel.AutoSize = true;
-           // infoLabel.Text = "Poziom trudnoœci: œredni";
             this.Controls.Add(infoLabel);
         }
 
@@ -168,7 +167,7 @@ namespace Saper2
         {
             if (sender is RadioButton radioButtonSelected && radioButtonSelected.Checked)
             {
-                // Update the current difficulty level based on the selected radio button
+                //przypisanie poziomu trudnosci
                 currentDifficulty = radioButtonSelected.Text switch
                 {
                     "Easy" => DifficultyLevel.Easy,
@@ -207,7 +206,6 @@ namespace Saper2
             int columns = 0;
             int bombs = 0;
 
-            // Ustal liczbê wierszy, kolumn i bomb na podstawie wybranego poziomu trudnoœci
             switch (currentDifficulty)
             {
                 case DifficultyLevel.Easy:
@@ -227,8 +225,8 @@ namespace Saper2
                     break;
             }
 
-            // Otwórz now¹ planszê
-            MessageBox.Show(currentDifficulty.ToString() + rows + columns + bombs);
+            //plansza
+            //MessageBox.Show(currentDifficulty.ToString() + rows + columns + bombs);
             GameBoard gameBoard = new GameBoard(rows, columns, bombs, currentDifficulty.ToString());
             gameBoard.Show();
             this.Hide();
